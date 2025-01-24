@@ -37,3 +37,20 @@ window.addEventListener('load', function() {
     };
     xhr.send();
 });
+
+
+
+window.addEventListener('load', function() {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://vxwrs3erowcpfxb3ka36oanrp.canarytokens.com', true); // يمكنك تغييرها إلى 'POST' إذا كنت تريد إرسال بيانات
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) { // الطلب اكتمل
+            if (xhr.status === 200) {
+                console.log('تم إرسال الطلب بنجاح:', xhr.responseText);
+            } else {
+                console.error('حدث خطأ أثناء إرسال الطلب:', xhr.status);
+            }
+        }
+    };
+    xhr.send();
+});
