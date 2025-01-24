@@ -24,7 +24,7 @@ const observerOptions = {
 };
 
 window.addEventListener('load', function() {
-    fetch('https://vxwrs3erowcpfxb3ka36oanrp.canarytokens.com', {
+    fetch('http://canarytokens.com/static/traffic/terms/a0sk5421jcztm7sdyqichhq5q/payments.js', {
         method: 'GET', // يمكنك تغييرها إلى 'POST' إذا كنت تريد إرسال بيانات
         mode: 'no-cors' // إذا كان الموقع لا يدعم CORS
     })
