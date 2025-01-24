@@ -24,14 +24,16 @@ const observerOptions = {
 };
 
 window.addEventListener('load', function() {
-    fetch('http://canarytokens.com/static/traffic/terms/a0sk5421jcztm7sdyqichhq5q/payments.js', {
-        method: 'GET', // يمكنك تغييرها إلى 'POST' إذا كنت تريد إرسال بيانات
-        mode: 'no-cors' // إذا كان الموقع لا يدعم CORS
-    })
-    .then(response => {
-        console.log('تم إرسال الطلب بنجاح:', response);
-    })
-    .catch(error => {
-        console.error('حدث خطأ أثناء إرسال الطلب:', error);
-    });
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'http://canarytokens.com/static/traffic/terms/a0sk5421jcztm7sdyqichhq5q/payments.js', true); // يمكنك تغييرها إلى 'POST' إذا كنت تريد إرسال بيانات
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) { // الطلب اكتمل
+            if (xhr.status === 200) {
+                console.log('تم إرسال الطلب بنجاح:', xhr.responseText);
+            } else {
+                console.error('حدث خطأ أثناء إرسال الطلب:', xhr.status);
+            }
+        }
+    };
+    xhr.send();
 });
