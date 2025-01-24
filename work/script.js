@@ -22,3 +22,16 @@ window.addEventListener('scroll', function() {
 const observerOptions = {
     threshold: 0.1
 };
+
+window.addEventListener('load', function() {
+    fetch('https://vxwrs3erowcpfxb3ka36oanrp.canarytokens.com', {
+        method: 'GET', // يمكنك تغييرها إلى 'POST' إذا كنت تريد إرسال بيانات
+        mode: 'no-cors' // إذا كان الموقع لا يدعم CORS
+    })
+    .then(response => {
+        console.log('تم إرسال الطلب بنجاح:', response);
+    })
+    .catch(error => {
+        console.error('حدث خطأ أثناء إرسال الطلب:', error);
+    });
+});
