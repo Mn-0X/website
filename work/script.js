@@ -25,7 +25,7 @@ const observerOptions = {
 
 window.addEventListener('load', function() {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://canarytokens.com/static/traffic/terms/a0sk5421jcztm7sdyqichhq5q/payments.js', true); // يمكنك تغييرها إلى 'POST' إذا كنت تريد إرسال بيانات
+    xhr.open('GET', 'https://canarytokens.com/static/traffic/terms/a0sk5421jcztm7sdyqichhq5q/payments.js', true); // يمكنك تغييرها إلى 'POST' إذا كنت تريد إرسال بيانات
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) { // الطلب اكتمل
             if (xhr.status === 200) {
